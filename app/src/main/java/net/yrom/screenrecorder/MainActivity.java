@@ -16,8 +16,8 @@
 package net.yrom.screenrecorder;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -45,10 +45,11 @@ import android.util.Log;
 import android.util.Range;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
-import android.widget.ToggleButton;
+
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import net.yrom.screenrecorder.view.NamedSpinner;
 
@@ -66,13 +67,13 @@ import static android.os.Build.VERSION_CODES.M;
 import static net.yrom.screenrecorder.ScreenRecorder.AUDIO_AAC;
 import static net.yrom.screenrecorder.ScreenRecorder.VIDEO_AVC;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_MEDIA_PROJECTION = 1;
     private static final int REQUEST_PERMISSIONS = 2;
     // members below will be initialized in onCreate()
     private MediaProjectionManager mMediaProjectionManager;
-    private Button mButton;
-    private ToggleButton mAudioToggle;
+    private MaterialButton mButton;
+    private SwitchMaterial mAudioToggle;
     private NamedSpinner mVieoResolution;
     private NamedSpinner mVideoFramerate;
     private NamedSpinner mIFrameInterval;
@@ -203,7 +204,7 @@ public class MainActivity extends Activity {
             public void onStop(Throwable error) {
                 runOnUiThread(() -> stopRecorder());
                 if (error != null) {
-                    toast("Recorder error ! See logcat for more details");
+                    toast(getString(R.string.recorder_error));
                     error.printStackTrace();
                     output.delete();
                 } else {
@@ -772,12 +773,9 @@ public class MainActivity extends Activity {
 
     private void toast(String message, Object... args) {
 
-        int length_toast = Locale.getDefault().getCountry().equals("BR") ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT;
-        // In Brazilian Portuguese this may take longer to read
-
         Toast toast = Toast.makeText(this,
                 (args.length == 0) ? message : String.format(Locale.US, message, args),
-                length_toast);
+                Toast.LENGTH_SHORT);
         if (Looper.myLooper() != Looper.getMainLooper()) {
             runOnUiThread(toast::show);
         } else {

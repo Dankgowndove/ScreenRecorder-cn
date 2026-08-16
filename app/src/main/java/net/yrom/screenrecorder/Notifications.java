@@ -66,7 +66,7 @@ class Notifications extends ContextWrapper {
     private Notification.Builder getBuilder() {
         if (mBuilder == null) {
             Notification.Builder builder = new Notification.Builder(this)
-                    .setContentTitle(getString(R.string.gravando))
+                    .setContentTitle(getString(R.string.recording_in_progress))
                     .setOngoing(true)
                     .setLocalOnly(true)
                     .setOnlyAlertOnce(true)

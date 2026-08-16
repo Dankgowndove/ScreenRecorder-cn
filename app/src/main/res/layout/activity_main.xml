@@ -1,151 +1,198 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingEnd="@dimen/activity_horizontal_margin"
-    android:paddingStart="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:background="@color/background">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="80dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_bar"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/media_format_chooser"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                style="?android:attr/titleTextStyle"
-                android:layout_width="wrap_content"
+            <!-- Video Settings Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/video_encode_config_h_264_avc" />
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
 
-            <net.yrom.screenrecorder.view.NamedSpinner
-                android:id="@+id/video_codec"
-                android:name="@string/video_encoder"
-                android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/video_encode_config_h_264_avc"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textColor="@color/primary" />
+
+                    <net.yrom.screenrecorder.view.NamedSpinner
+                        android:id="@+id/video_codec"
+                        android:name="@string/video_encoder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp" />
+
+                    <net.yrom.screenrecorder.view.NamedSpinner
+                        android:id="@+id/resolution"
+                        android:name="@string/resolution"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:entries="@array/video_resolutions" />
+
+                    <net.yrom.screenrecorder.view.NamedSpinner
+                        android:id="@+id/video_bitrate"
+                        android:name="@string/bitrate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:entries="@array/video_bitrates" />
+
+                    <net.yrom.screenrecorder.view.NamedSpinner
+                        android:id="@+id/framerate"
+                        android:name="@string/frame_rate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:entries="@array/video_framerates" />
+
+                    <net.yrom.screenrecorder.view.NamedSpinner
+                        android:id="@+id/iframe_interval"
+                        android:name="@string/frame_interval"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:entries="@array/iframeintervals" />
+
+                    <net.yrom.screenrecorder.view.NamedSpinner
+                        android:id="@+id/avc_profile"
+                        android:name="@string/avc_profle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp" />
+
+                    <net.yrom.screenrecorder.view.NamedSpinner
+                        android:id="@+id/orientation"
+                        android:name="@string/orientation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:entries="@array/orientations" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Audio Toggle -->
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/with_audio"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp" />
+                android:layout_marginBottom="16dp"
+                android:checked="true"
+                android:text="@string/with_audio"
+                android:textAppearance="?attr/textAppearanceBodyLarge" />
 
-            <net.yrom.screenrecorder.view.NamedSpinner
-                android:id="@+id/resolution"
-                android:name="@string/resolution"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:entries="@array/video_resolutions" />
-
-            <net.yrom.screenrecorder.view.NamedSpinner
-                android:id="@+id/video_bitrate"
-                android:name="@string/bitrate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:entries="@array/video_bitrates" />
-
-            <net.yrom.screenrecorder.view.NamedSpinner
-                android:id="@+id/framerate"
-                android:name="@string/frame_rate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_marginTop="8dp"
-                android:entries="@array/video_framerates" />
-
-            <net.yrom.screenrecorder.view.NamedSpinner
-                android:id="@+id/iframe_interval"
-                android:name="@string/frame_interval"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_marginTop="8dp"
-                android:entries="@array/iframeintervals" />
-
-            <net.yrom.screenrecorder.view.NamedSpinner
-                android:id="@+id/avc_profile"
-                android:name="@string/avc_profle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp" />
-
-            <net.yrom.screenrecorder.view.NamedSpinner
-                android:id="@+id/orientation"
-                android:name="@string/orientation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:entries="@array/orientations" />
-
-            <LinearLayout
+            <!-- Audio Settings Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/audio_format_chooser"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="vertical">
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
 
-                <TextView
-                    style="?android:attr/titleTextStyle"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/audio_encode_config_h_264_aac" />
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <net.yrom.screenrecorder.view.NamedSpinner
-                    android:id="@+id/audio_codec"
-                    android:name="@string/audio_encoder"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/audio_encode_config_h_264_aac"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textColor="@color/primary" />
 
-                <net.yrom.screenrecorder.view.NamedSpinner
-                    android:id="@+id/audio_channel_count"
-                    android:name="@string/channels"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:entries="@array/audio_channels" />
+                    <net.yrom.screenrecorder.view.NamedSpinner
+                        android:id="@+id/audio_codec"
+                        android:name="@string/audio_encoder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp" />
 
-                <net.yrom.screenrecorder.view.NamedSpinner
-                    android:id="@+id/sample_rate"
-                    android:name="@string/sample_rate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp" />
+                    <net.yrom.screenrecorder.view.NamedSpinner
+                        android:id="@+id/audio_channel_count"
+                        android:name="@string/channels"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:entries="@array/audio_channels" />
 
-                <net.yrom.screenrecorder.view.NamedSpinner
-                    android:id="@+id/audio_bitrate"
-                    android:name="@string/bitrate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp" />
+                    <net.yrom.screenrecorder.view.NamedSpinner
+                        android:id="@+id/sample_rate"
+                        android:name="@string/sample_rate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp" />
 
-                <net.yrom.screenrecorder.view.NamedSpinner
-                    android:id="@+id/aac_profile"
-                    android:name="@string/aac_profile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
+                    <net.yrom.screenrecorder.view.NamedSpinner
+                        android:id="@+id/audio_bitrate"
+                        android:name="@string/bitrate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp" />
+
+                    <net.yrom.screenrecorder.view.NamedSpinner
+                        android:id="@+id/aac_profile"
+                        android:name="@string/aac_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
-    <ToggleButton
-        android:id="@+id/with_audio"
-        android:layout_width="wrap_content"
+    <!-- Bottom Action Bar -->
+    <LinearLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/record_button"
-        android:layout_alignParentEnd="true"
-        android:checked="true"
-        android:textOff="@string/without_audio"
-        android:textOn="@string/with_audio" />
+        android:background="@color/surfaceContainer"
+        android:elevation="8dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <Button
-        android:id="@+id/record_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:text="@string/start_recorder" />
-</RelativeLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/record_button"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="@string/start_recorder"
+            android:textSize="16sp"
+            app:cornerRadius="28dp"
+            app:iconGravity="textStart" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,7 @@
     <string name="frame_interval">I帧间隔</string>
     <string name="avc_profle">AVC配置文件</string>
     <string name="orientation">方向</string>
-    <string name="audio_encode_config_h_264_aac">音频编码配置（H.264 AAC）</string>
+    <string name="audio_encode_config_h_264_aac">音频编码配置（AAC）</string>
     <string name="audio_encoder">音频编码器</string>
     <string name="channels">声道</string>
     <string name="sample_rate">采样率（Hz）</string>
@@ -30,7 +30,9 @@
     <string name="codec_unsupported_with_framerate">编码器\'%s\'不支持帧率%d</string>
     <string name="recorder_stopped_saved_file">录制已停止！文件已保存</string>
     <string name="length_video">视频长度：</string>
-    <string name="gravando">录制中...</string>
+    <string name="recording_in_progress">正在录制中...</string>
     <string name="stop">停止</string>
     <string name="create_screenRecorder_failure">创建屏幕录制器失败</string>
+    <string name="recorder_error">录制错误！请查看 logcat 获取详细信息</string>
+
 </resources>

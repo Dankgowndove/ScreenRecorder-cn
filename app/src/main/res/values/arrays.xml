@@ -46,6 +46,6 @@
         <item>@string/portrait</item>
         <item>@string/landscape</item>
     </string-array>
-    <string name="portrait">Portrait</string>
-    <string name="landscape">Landscape</string>
+    <string name="portrait">竖屏</string>
+    <string name="landscape">横屏</string>
 </resources>

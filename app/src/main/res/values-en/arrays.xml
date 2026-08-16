@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="portrait">Portrait</string>
+    <string name="landscape">Landscape</string>
+</resources>
