@@ -1,11 +1,10 @@
-Privacy Policy
+隐私政策
 ===
 
-This simple Privacy Policy explains what permissions this application needed in runtime.
+本简短的隐私政策说明了本应用程序在运行时需要哪些权限。
 
-### Local storage ###
-This application need save the MP4 file, which captured screen, into  your storage device like SD card.
+### 本地存储 ###
+本应用程序需要将捕获的屏幕画面保存到您的存储设备（如SD卡）中。
 
-### Audio Recording ###
-This application may record audio and encode it into the MP4 file what you wanted.
-
+### 音频录制 ###
+本应用程序可能会录制音频，并将其编码成您想要的MP4文件。
