@@ -342,11 +342,17 @@ class MicRecorder implements Encoder {
                     sampleRateInHz, channelConfig, audioFormat));
             return null;
         }
-        AudioRecord record = new AudioRecord(MediaRecorder.AudioSource.MIC,
-                sampleRateInHz,
-                channelConfig,
-                audioFormat,
-                minBytes * 2);
+        AudioRecord record = null;
+        try {
+            record = new AudioRecord(MediaRecorder.AudioSource.MIC,
+                    sampleRateInHz,
+                    channelConfig,
+                    audioFormat,
+                    minBytes * 2);
+        } catch (IllegalArgumentException e) {
+            Log.e(TAG, "AudioRecord construction failed: " + e.getMessage());
+            return null;
+        }
 
         if (record.getState() == AudioRecord.STATE_UNINITIALIZED) {
             Log.e(TAG, String.format(Locale.US, "Bad arguments to new AudioRecord %d, %d, %d",

@@ -62,7 +62,7 @@ public class VideoEncodeConfig {
         format.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, iframeInterval);
         if (codecProfileLevel != null && codecProfileLevel.profile != 0 && codecProfileLevel.level != 0) {
             format.setInteger(MediaFormat.KEY_PROFILE, codecProfileLevel.profile);
-            format.setInteger("level", codecProfileLevel.level);
+            // format.setInteger("level", codecProfileLevel.level);
         }
         // maybe useful
         // format.setInteger(MediaFormat.KEY_REPEAT_PREVIOUS_FRAME_AFTER, 10_000_000);

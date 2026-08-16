@@ -90,6 +90,10 @@ public class MainActivity extends AppCompatActivity {
     private MediaCodecInfo[] mAacCodecInfos; // aac codecs
     private Notifications mNotifications;
 
+    // 推荐编码器名称（根据设备可能不同，可自行调整）
+    private static final String RECOMMENDED_VIDEO_CODEC = "c2.android.avc.encoder";
+    private static final String RECOMMENDED_AUDIO_CODEC = "c2.android.aac.encoder";
+
     /**
      * <b>NOTE:</b>
      * {@code ScreenRecorder} should run in background Service
@@ -283,9 +287,13 @@ public class MainActivity extends AppCompatActivity {
                 framerate, iframe, codec, VIDEO_AVC, profileLevel);
     }
 
-    private static File getSavingDir() {
-        return new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES),
-                "Screenshots");
+    private File getSavingDir() {
+        // 使用应用专属外部存储目录，避免 Android 10+ 分区存储权限问题
+        File dir = new File(getExternalFilesDir(Environment.DIRECTORY_MOVIES), "Screenshots");
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        return dir;
     }
 
     @Override
@@ -663,7 +671,8 @@ public class MainActivity extends AppCompatActivity {
             adapter.addAll(rates);
             adapter.notifyDataSetChanged();
         }
-        mAudioBitrate.setSelectedPosition(rates.size() / 2);  
+        // 修复之前错误设置到 mAudioSampleRate 的问题
+        mAudioBitrate.setSelectedPosition(rates.size() / 2);
     }
 
     private MediaCodecInfo getVideoCodecInfo(String codecName) {
@@ -701,11 +710,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String getSelectedVideoCodec() {
-        return mVideoCodec == null ? null : mVideoCodec.getSelectedItem();
+        if (mVideoCodec == null) return null;
+        String selected = mVideoCodec.getSelectedItem();
+        return selected != null ? selected.replace("  ★推荐", "") : null;
+    }
+
+    private String getSelectedAudioCodec() {
+        if (mAudioCodec == null) return null;
+        String selected = mAudioCodec.getSelectedItem();
+        return selected != null ? selected.replace("  ★推荐", "") : null;
     }
 
     private SpinnerAdapter createCodecsAdapter(MediaCodecInfo[] codecInfos) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, codecInfoNames(codecInfos));
+        String[] names = new String[codecInfos.length];
+        for (int i = 0; i < codecInfos.length; i++) {
+            String name = codecInfos[i].getName();
+            if (name.equals(RECOMMENDED_VIDEO_CODEC) || name.equals(RECOMMENDED_AUDIO_CODEC)) {
+                names[i] = name + "  ★推荐";
+            } else {
+                names[i] = name;
+            }
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, names);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         return adapter;
     }
@@ -740,10 +766,6 @@ public class MainActivity extends AppCompatActivity {
         if (xes.length != 2) throw new IllegalArgumentException();
         return new int[]{Integer.parseInt(xes[0]), Integer.parseInt(xes[1])};
 
-    }
-
-    private String getSelectedAudioCodec() {
-        return mAudioCodec == null ? null : mAudioCodec.getSelectedItem();
     }
 
     private int getSelectedAudioBitrate() {
