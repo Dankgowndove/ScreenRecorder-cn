@@ -24,14 +24,15 @@
     <string name="no_permission_to_write_sd_ard">No permission to write to SD card</string>
     <string name="permission_denied_screen_recorder_cancel">Permission denied! Screen recorder cancelled</string>
     <string name="using_your_mic_to_record_audio">Using your microphone to record audio and saving video file to SD card</string>
-    <string name="codec_unsupported_size_with_framerate">Codec '%s' does not support size %dx%d(%s) with frame rate %d</string>
-    <string name="codec_unsupported_size">Codec '%s' does not support size %dx%d (%s)</string>
-    <string name="codec_unsupported_bitrate">Codec '%s' does not support bitrate %d</string>
-    <string name="codec_unsupported_with_framerate">Codec '%s' does not support frame rate %d</string>
+    <string name="codec_unsupported_size_with_framerate" formatted="false">Codec %s does not support size %dx%d(%s) with frame rate %d</string>
+    <string name="codec_unsupported_size" formatted="false">Codec %s does not support size %dx%d (%s)</string>
+    <string name="codec_unsupported_bitrate" formatted="false">Codec %s does not support bitrate %d</string>
+    <string name="codec_unsupported_with_framerate" formatted="false">Codec %s does not support frame rate %d</string>
     <string name="recorder_stopped_saved_file">Recording stopped! File saved</string>
     <string name="length_video">Length:</string>
     <string name="recording_in_progress">Recording...</string>
     <string name="stop">Stop</string>
     <string name="create_screenRecorder_failure">Failed to create screen recorder</string>
+    <string name="recorder_error">Recording error! See logcat for more details</string>
 
 </resources>

@@ -24,10 +24,10 @@
     <string name="no_permission_to_write_sd_ard">无写入SD卡权限</string>
     <string name="permission_denied_screen_recorder_cancel">权限被拒绝！屏幕录制已取消</string>
     <string name="using_your_mic_to_record_audio">正在使用麦克风录制音频，并使用SD卡保存视频文件</string>
-    <string name="codec_unsupported_size_with_framerate">编码器\'%s\'不支持尺寸%dx%d(%s)和帧率%d</string>
-    <string name="codec_unsupported_size">编码器\'%s\'不支持尺寸%dx%d (%s)</string>
-    <string name="codec_unsupported_bitrate">编码器\'%s\'不支持比特率%d</string>
-    <string name="codec_unsupported_with_framerate">编码器\'%s\'不支持帧率%d</string>
+    <string name="codec_unsupported_size_with_framerate" formatted="false">编码器\'%s\'不支持尺寸%dx%d(%s)和帧率%d</string>
+    <string name="codec_unsupported_size" formatted="false">编码器\'%s\'不支持尺寸%dx%d (%s)</string>
+    <string name="codec_unsupported_bitrate" formatted="false">编码器\'%s\'不支持比特率%d</string>
+    <string name="codec_unsupported_with_framerate" formatted="false">编码器\'%s\'不支持帧率%d</string>
     <string name="recorder_stopped_saved_file">录制已停止！文件已保存</string>
     <string name="length_video">视频长度：</string>
     <string name="recording_in_progress">正在录制中...</string>
