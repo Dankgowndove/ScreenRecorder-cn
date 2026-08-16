@@ -663,7 +663,7 @@ public class MainActivity extends AppCompatActivity {
             adapter.addAll(rates);
             adapter.notifyDataSetChanged();
         }
-        mAudioSampleRate.setSelectedPosition(rates.size() / 2);
+        mAudioBitrate.setSelectedPosition(rates.size() / 2);
     }
 
     private MediaCodecInfo getVideoCodecInfo(String codecName) {
