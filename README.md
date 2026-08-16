@@ -4,8 +4,6 @@ Screen Recorder
 
 <img alt="screenshot" src="screenshot.png" width="50%" />
 
-[![Get it on Google Play](https://play.google.com/intl/en_us/badges/images/badge_new.png)][8]  [点此处下载APK][7] 快速预览项目功能
-
 说明：使用了 [MediaProjectionManager][1], [VirtualDisplay][2], [AudioRecord][3], [MediaCodec][4] 以及 [MediaMuxer][5] 等API，故而这个项目最低支持Android 5.0。
 
 录屏原理
