@@ -42,3 +42,7 @@ mMuxer.writeSampleData(mVideoTrackIndex, encodedData, mBufferInfo);
 [6]: https://developer.android.com/reference/android/hardware/display/DisplayManager.html
 [7]: https://github.com/yrom/ScreenRecorder/releases/latest
 [8]: https://play.google.com/store/apps/details?id=net.yrom.screenrecorder.demo
+
+## Update Log
+
+- 2026-08-16 14:28 - Git configuration test and README update
