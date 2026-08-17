@@ -3,6 +3,11 @@ apply plugin: 'com.android.application'
 android {
     namespace 'net.yrom.screenrecorder'
     compileSdkVersion 34
+    
+    buildFeatures {
+        buildConfig = true
+    }
+   
 
     defaultConfig {
         applicationId "net.yrom.screenrecorder.demo"
