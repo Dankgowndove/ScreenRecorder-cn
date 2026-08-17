@@ -41,6 +41,6 @@ mMuxer.writeSampleData(mVideoTrackIndex, encodedData, mBufferInfo);
 [7]: https://github.com/yrom/ScreenRecorder/releases/latest
 [8]: https://play.google.com/store/apps/details?id=net.yrom.screenrecorder.demo
 
-## Update Log
+## 更新日志
 
-- 2026-08-16 14:28 - Git configuration test and README update
+- 2026-08-16 14:28 - Git 配置测试及 README 更新
